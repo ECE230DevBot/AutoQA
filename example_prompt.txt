@@ -1,0 +1,16 @@
+### Context:
+{{context}}
+
+### Instruction:
+Solve the following question:
+{{question}}
+By doing the following:
+First, reflect on the question (without actually solving it or doing any math) and the context shown above and determine the correct approach/strategy to solving it.
+Then, solve the question step by step. If you ever need to solve an equation or calculate the value of an expression, utilize function calling by writing sympy code. But before writing code, plan out what variables will be used and what equations/expressions will be solved, and what should be printed out.
+When writing your code block, make sure to define all variables used and use print statements as variables won't be displayed automatically, ie, write ``print(solution)`` instead of ``solution``.
+After you output code, I will go and run the code and report whatever is printed to console, like this:
+```output
+5```
+Reflect upon the results and see if they make sense, and continue with the next step as needed. If there is an error, analyze the code and the error and think of ways to fix the error. Then output new code. If you fail to fix the error, think of an alternative way to solve the problem.
+Note that after I run the code, I will wipe the memory. Therefor, previously defined symbols and variables will be erased and must be redefined in the next code block you write. For instance, if you found that m=5 in the last code block, you must redefine m=5 in the new code block you write.
+Finally, after solving the problem, output "Answer:", followed by the answer.

@@ -1,0 +1,46 @@
+### Context:
+Objective: Calculate the first three energy levels of an electron in an infinite potential well.
+
+Consider an electron in an infinite potential well of width 5 Å.
+
+#### Solution
+
+From Equation (2.38) we have
+
+$$E_n = \frac{h^2 n^2 \pi^2}{2 m a^2} = \frac{n^2 (1.054 \times 10^{-34}) \pi^2}{2 (9.11 \times 10^{-31}) k (5 \times 10^{-10})^2} = n^2 (2.41 \times 10^{-19}) J$$
+
+or
+
+$$E_n = \frac{n^2 (2.41 \times 10^{-19})}{1.6 \times 10^{-19}} = n^2 (1.51) eV$$
+
+Then,
+
+$$E_1 = 1.51 eV, \quad E_2 = 6.04 eV, \quad E_3 = 13.59 eV$$
+
+#### Comment
+
+This calculation shows the order of magnitude of the energy levels of a bound electron.
+
+EXERCISE PROBLEM
+
+**Ex 2.3** (a) The width of an infinite potential well is 12 Å. Determine the first three allowed energy levels (in eV) for an electron. (b) Repeat part (a) for a proton.
+
+$$\begin{array}{l}
+\Lambda^3 + 01 \times 8T^1 \Lambda^3 + 01 \times 0L^5 \Lambda^3 + 01 \times 5T^1 (q) \Lambda^3 1S^3 \Sigma^+ \Lambda^3 \Phi 01 \Lambda^3 \Gamma 9 \Sigma (p) \text{surv}
+\end{array}$$
+
+<|begin_image|> Figure 2.7a shows the first four allowed energies for the particle in the infinite potential well, and Figure 2.7b,c shows the corresponding wave functions and probability functions. We may note that as the energy increases, the probability of finding the particle at any given value of x becomes more uniform.
+
+### Instruction:
+Solve the following question:
+(a) An electron is bound in a one-dimensional infinite potential well with a width of 10 Å. (a) Calculate the first three energy levels that the electron may occupy. (b) If the electron drops from the third to the second energy level, what is the wavelength of a photon that might be emitted?
+By doing the following:
+First, reflect on the question (without actually solving it or doing any math) and the context shown above and determine the correct approach/strategy to solving it.
+Then, solve the question step by step. If you ever need to solve an equation or calculate the value of an expression, utilize function calling by writing sympy code. But before writing code, plan out what variables will be used and what equations/expressions will be solved, and what should be printed out.
+When writing your code block, make sure to define all variables used and use print statements as variables won't be displayed automatically, ie, write ``print(solution)`` instead of ``solution``.
+After you output code, I will go and run the code and report whatever is printed to console, like this:
+```output
+5```
+Reflect upon the results and see if they make sense, and continue with the next step as needed. If there is an error, analyze the code and the error and think of ways to fix the error. Then output new code. If you fail to fix the error, think of an alternative way to solve the problem.
+Note that after I run the code, I will wipe the memory. Therefor, previously defined symbols and variables will be erased and must be redefined in the next code block you write. For instance, if you found that m=5 in the last code block, you must redefine m=5 in the new code block you write.
+Finally, after solving the problem, output "Answer:", followed by the answer.

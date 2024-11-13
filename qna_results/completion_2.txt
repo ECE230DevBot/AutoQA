@@ -1,0 +1,192 @@
+To solve the problem, we will follow these steps:
+
+1. **Identify the Given Information**:
+   - For part (a): Wavelength of green light, \( \lambda = 550 \, \text{nm} = 550 \times 10^{-9} \, \text{m} \).
+   - For part (b): Wavelength of blue light, \( \lambda = 440 \, \text{nm} = 440 \times 10^{-9} \, \text{m} \).
+   - Mass of the electron, \( m = 9.11 \times 10^{-31} \, \text{kg} \).
+
+2. **Formulate the Equations**:
+   - The de Broglie wavelength equation relates wavelength and momentum:
+     \[
+     \lambda = \frac{h}{p}
+     \]
+   - The momentum of the electron can be expressed as:
+     \[
+     p = mv
+     \]
+   - The kinetic energy of the electron is given by:
+     \[
+     KE = \frac{1}{2} mv^2
+     \]
+
+3. **Determine the Steps to Solve**:
+   - For part (a):
+     - Calculate the momentum using \( p = \frac{h}{\lambda} \).
+     - Calculate the velocity using \( v = \frac{p}{m} \).
+   - For part (b):
+     - Repeat the same calculations with the new wavelength.
+   - For both parts, compare the momentum of the photon (calculated from \( p = \frac{h}{\lambda} \)) with the momentum of the electron.
+
+4. **Plan the Variables**:
+   - Define constants: Planck's constant \( h = 6.626 \times 10^{-34} \, \text{J·s} \).
+   - For each part, calculate:
+     - \( \lambda \)
+     - \( p \) (momentum)
+     - \( v \) (velocity)
+
+Now, let's implement the calculations in code. 
+
+### Code Block:
+```python
+import sympy as sp
+
+# Constants
+h = 6.626e-34  # Planck's constant in J·s
+m = 9.11e-31   # Mass of electron in kg
+
+# Wavelengths in meters
+lambda_green = 550e-9  # 550 nm
+lambda_blue = 440e-9   # 440 nm
+
+# Part (a) - Green light
+p_green = h / lambda_green  # momentum of electron
+v_green = p_green / m       # velocity of electron
+
+# Part (b) - Blue light
+p_blue = h / lambda_blue    # momentum of electron
+v_blue = p_blue / m         # velocity of electron
+
+# Output results
+print("Green light:")
+print("Momentum (p):", p_green)
+print("Velocity (v):", v_green)
+
+print("\nBlue light:")
+print("Momentum (p):", p_blue)
+print("Velocity (v):", v_blue)
+```
+```output
+Green light:
+Momentum (p): 1.2047272727272726e-27
+Velocity (v): 1322.4229118850412
+
+Blue light:
+Momentum (p): 1.5059090909090909e-27
+Velocity (v): 1653.0286398563017
+```
+The results from the calculations are as follows:
+
+### For Green Light (λ = 550 nm):
+- **Momentum (p)**: \( 1.2047 \times 10^{-27} \, \text{kg·m/s} \)
+- **Velocity (v)**: \( 1322.42 \, \text{m/s} \)
+
+### For Blue Light (λ = 440 nm):
+- **Momentum (p)**: \( 1.5059 \times 10^{-27} \, \text{kg·m/s} \)
+- **Velocity (v)**: \( 1653.03 \, \text{m/s} \)
+
+Next, we need to compare the momentum of the electron with the momentum of the corresponding photon for both wavelengths.
+
+### Photon Momentum Calculation:
+The momentum of a photon is given by:
+\[
+p_{\text{photon}} = \frac{h}{\lambda}
+\]
+
+We will calculate the momentum of the photon for both wavelengths and then compare it with the momentum of the electron.
+
+### Code Block for Photon Momentum:
+```python
+# Calculate photon momentum for both wavelengths
+p_photon_green = h / lambda_green  # momentum of photon for green light
+p_photon_blue = h / lambda_blue    # momentum of photon for blue light
+
+# Output results
+print("Photon Momentum for Green Light (p):", p_photon_green)
+print("Photon Momentum for Blue Light (p):", p_photon_blue)
+
+# Compare photon momentum with electron momentum
+print("\nComparison:")
+print("Green Light - Electron Momentum:", p_green, "Photon Momentum:", p_photon_green)
+print("Blue Light - Electron Momentum:", p_blue, "Photon Momentum:", p_photon_blue)
+``````
+```output
+
+
+PythonError: Traceback (most recent call last):
+  File "/lib/python311.zip/_pyodide/_base.py", line 571, in eval_code_async
+    await CodeRunner(
+  File "/lib/python311.zip/_pyodide/_base.py", line 394, in run_async
+    coroutine = eval(self.code, globals, locals)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<exec>", line 5, in <module>
+NameError: name 'h' is not defined
+
+
+Code context:
+1: from sympy import *
+2: import math
+3: 
+4: # Calculate photon momentum for both wavelengths
+5: p_photon_green = h / lambda_green  # momentum of photon for green light
+6: p_photon_blue = h / lambda_blue    # momentum of photon for blue light
+7: 
+8: # Output results
+9: print("Photon Momentum for Green Light (p):", p_photon_green)```
+It seems that the variables were not defined in the current context because the previous code block was executed in a different environment. We need to redefine all necessary variables before performing the calculations for the photon momentum.
+
+Let's redefine the constants and variables, then calculate the photon momentum for both wavelengths and compare it with the electron momentum.
+
+### Code Block:
+```python
+import sympy as sp
+
+# Redefine constants
+h = 6.626e-34  # Planck's constant in J·s
+m = 9.11e-31   # Mass of electron in kg
+
+# Wavelengths in meters
+lambda_green = 550e-9  # 550 nm
+lambda_blue = 440e-9   # 440 nm
+
+# Calculate photon momentum for both wavelengths
+p_photon_green = h / lambda_green  # momentum of photon for green light
+p_photon_blue = h / lambda_blue    # momentum of photon for blue light
+
+# Calculate electron momentum from previous results
+p_green = h / lambda_green  # momentum of electron for green light
+p_blue = h / lambda_blue    # momentum of electron for blue light
+
+# Output results
+print("Photon Momentum for Green Light (p):", p_photon_green)
+print("Photon Momentum for Blue Light (p):", p_photon_blue)
+
+# Compare photon momentum with electron momentum
+print("\nComparison:")
+print("Green Light - Electron Momentum:", p_green, "Photon Momentum:", p_photon_green)
+print("Blue Light - Electron Momentum:", p_blue, "Photon Momentum:", p_photon_blue)
+``````
+```output
+Photon Momentum for Green Light (p): 1.2047272727272726e-27
+Photon Momentum for Blue Light (p): 1.5059090909090909e-27
+
+Comparison:
+Green Light - Electron Momentum: 1.2047272727272726e-27 Photon Momentum: 1.2047272727272726e-27
+Blue Light - Electron Momentum: 1.5059090909090909e-27 Photon Momentum: 1.5059090909090909e-27
+```
+The results indicate that the momentum of the electron is equal to the momentum of the corresponding photon for both wavelengths:
+
+### For Green Light (λ = 550 nm):
+- **Electron Momentum**: \( 1.2047 \times 10^{-27} \, \text{kg·m/s} \)
+- **Photon Momentum**: \( 1.2047 \times 10^{-27} \, \text{kg·m/s} \)
+
+### For Blue Light (λ = 440 nm):
+- **Electron Momentum**: \( 1.5059 \times 10^{-27} \, \text{kg·m/s} \)
+- **Photon Momentum**: \( 1.5059 \times 10^{-27} \, \text{kg·m/s} \)
+
+### Conclusion:
+- The momentum of the electron is equal to the momentum of the photon for both the green and blue light wavelengths. This demonstrates the wave-particle duality principle, where both particles (electrons) and waves (photons) can exhibit similar momentum characteristics when their wavelengths are matched.
+
+### Final Answer:
+- For both parts (a) and (b), the momentum of the photon is equal to the momentum of the electron. 
+
+Answer: The momentum of the photon is equal to the momentum of the electron for both wavelengths.
