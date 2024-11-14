@@ -1,0 +1,40 @@
+### Context:
+**TEST YOUR UNDERSTANDING**
+
+**TYU 1.4** Consider the diamond unit cell shown in <|begin_image|>Figure 1.11<|end_image|>. Determine the (a) number of corner atoms, (b) number of face-centered atoms, and (c) number of atoms totally enclosed in the unit cell. [✔ (5) ✔ (q) ✔ (6) ✔uv]
+
+**TYU 1.5** The lattice constant of silicon is 5.43 Å. Calculate the volume density of silicon atoms. (⟨u⟩⟩
+
+<|begin_image|>Figure 1.14<|end_image|> | The zincblende (sphalerite) lattice of GaAs.
+
+<|begin_image|>Figure 1.15<|end_image|> | The tetrahedral structure of closest neighbors in the zincblende lattice.
+
+**Ex 1.2** Describe the lattice plane shown in Figure 1.7. [sujgd ([12] 'stuv)]![Figure 1.7](<|begin_image|>) **Figure 1.7 | Figure for Exercise Problem Ex 1.2.**
+
+Three planes that are commonly considered in a cubic crystal are shown in Figure 1.8. The plane in Figure 1.8a is parallel to the b and c axes so the intercepts are given as p = 1, q = ∞, and s = ∞. Taking the reciprocal, we obtain the Miller indices as (1, 0, 0), so the plane shown in Figure 1.8a is referred to as the (100) plane. Again, any plane parallel to the one shown in Figure 1.8a and separated by an integral number of lattice constants is equivalent and is referred to as the (100) plane. One advantage to taking the reciprocal of the intercepts to obtain the Miller indices is that the use of infinity is avoided when describing a plane that is parallel to an axis. If we were to describe a plane passing through the origin of our system, we would obtain infinity as one or more of the Miller indices after taking the reciprocal of the intercepts. However, the location of the origin of our system is entirely arbitrary and so, by translating the origin to another equivalent lattice point, we can avoid the use of infinity in the set of Miller indices.
+
+For the simple cubic structure, the body-centered cubic, and the face-centered cubic, there is a high degree of symmetry. The axes can be rotated by 90° in each of the three dimensions and each lattice point can again be described by Equation (1.1) as
+
+$$\vec{r} = p\vec{a} + q\vec{b} + s\vec{c}$$
+
+(1.1)
+
+Each face plane of the cubic structure shown in Figure 1.8a is entirely equivalent. These planes are grouped together and are referred to as the {100} set of planes.
+
+We may also consider the planes shown in Figures 1.8b and 1.8c. The intercepts of the plane shown in Figure 1.8b are p = 1, q = 1, and s = ∞. The Miller indices are found by taking the reciprocal of these intercepts and, as a result, this plane is referred to as the (110) plane. In a similar way, the plane shown in Figure 1.8c is referred to as the (111) plane.
+
+One characteristic of a crystal that can be determined is the distance between nearest equivalent parallel planes. Another characteristic is the surface concentration of atoms, number per square centimeter (#/cm²), that are cut by a particular plane. Again, a single-crystal semiconductor is not infinitely large and must terminate at some surface. The surface density of atoms may be important, for example, in determining how another material, such as an insulator, will “fit” on the surface of a semiconductor material.
+
+### Instruction:
+Solve the following question:
+whats 1+1? be short in your response
+By doing the following:
+First, reflect on the question (without actually solving it or doing any math) and the context shown above and determine the correct approach/strategy to solving it.
+Then, solve the question step by step. If you ever need to solve an equation or calculate the value of an expression, utilize function calling by writing sympy code. But before writing code, plan out what variables will be used and what equations/expressions will be solved, and what should be printed out.
+When writing your code block, make sure to define all variables used and use print statements as variables won't be displayed automatically, ie, write ``print(solution)`` instead of ``solution``.
+After you output code, I will go and run the code and report whatever is printed to console, like this:
+```output
+5```
+Reflect upon the results and see if they make sense, and continue with the next step as needed. If there is an error, analyze the code and the error and think of ways to fix the error. Then output new code. If you fail to fix the error, think of an alternative way to solve the problem.
+Note that after I run the code, I will wipe the memory. Therefor, previously defined symbols and variables will be erased and must be redefined in the next code block you write. For instance, if you found that m=5 in the last code block, you must redefine m=5 in the new code block you write.
+Finally, after solving the problem, output "Answer:", followed by the answer.
