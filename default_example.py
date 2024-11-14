@@ -18,7 +18,7 @@ with open('corelibs/RAG_array/rag.json') as f:
 ## SETUP
 model = Model(url="https://api.openai.com/v1/chat/completions", model="gpt-4o-mini", api_key=api_key)
 embeddings_model = Embedding_Model(url='https://api.openai.com/v1/embeddings', api_key=api_key, model="text-embedding-3-large")
-embeddings_model.setup_doc_embeds(rag_data, override_saves=False)
+embeddings_model.setup_doc_embeds(rag_data, override_saves=True)
 
 
 # Type whatever question you want

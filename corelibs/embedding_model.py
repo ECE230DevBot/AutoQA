@@ -40,14 +40,14 @@ class Embedding_Model:
         if not os.path.exists(self.embeddings_save_path) or override_saves:
             # Batch process because this thing sucks
             doc_embeddings = None
-            for i in tqdm(range(0, len(inputs), 10)):
+            for i in tqdm(range(0, len(inputs), 150)):
                 ran = False
                 while ran == False:
                     try:
                         if doc_embeddings is None:
-                            doc_embeddings = self.get_embed(inputs[i:i+10])
+                            doc_embeddings = self.get_embed(inputs[i:i+150])
                         else:
-                            doc_embeddings = np.concatenate((doc_embeddings, self.get_embed(inputs[i:i+10])))
+                            doc_embeddings = np.concatenate((doc_embeddings, self.get_embed(inputs[i:i+150])))
                         ran = True
                     except:
                         ran = False

@@ -28,25 +28,6 @@ try:
         rag_data = json.load(f)
 except FileNotFoundError:
     rag_data = []
-
-# Initialize session state variables if they don't exist
-if 'model' not in st.session_state:
-    st.session_state.model = None
-if 'embeddings_model' not in st.session_state:
-    st.session_state.embeddings_model = None
-if 'rag_data' not in st.session_state:
-    st.session_state.rag_data = None
-
-# Initialize default configuration values
-if 'initialized' not in st.session_state:
-    st.session_state.main_url = "https://api.openai.com/v1/chat/completions"
-    st.session_state.main_model = "gpt-4o-mini"
-    st.session_state.main_api_key = default_api_key
-    st.session_state.embed_url = "https://api.openai.com/v1/embeddings"
-    st.session_state.embed_model = "text-embedding-3-large"
-    st.session_state.embed_api_key = default_api_key
-    st.session_state.prompt_template_value = default_prompt
-    st.session_state.initialized = True
     
 def save_configuration():
     try:
@@ -62,6 +43,21 @@ def save_configuration():
     except Exception as e:
         st.error(f"Error saving configuration: {str(e)}")
 
+# Initialize default configuration values
+if 'initialized' not in st.session_state:
+    st.session_state.model = None
+    st.session_state.embeddings_model = None
+    st.session_state.rag_data = None
+    st.session_state.main_url = "https://api.openai.com/v1/chat/completions"
+    st.session_state.main_model = "gpt-4o-mini"
+    st.session_state.main_api_key = default_api_key
+    st.session_state.embed_url = "https://api.openai.com/v1/embeddings"
+    st.session_state.embed_model = "text-embedding-3-large"
+    st.session_state.embed_api_key = default_api_key
+    st.session_state.prompt_template_value = default_prompt
+    st.session_state.initialized = True
+    save_configuration()
+    
 def save_prompt_completion(prompt, completion):
     """Save prompt and completion to separate files with timestamp."""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -84,10 +80,6 @@ def check_cohere_terrarium_status():
         return True
     except RequestException:
         return False
-
-# Save default configuration on first run
-if st.session_state.model is None:
-    save_configuration()
 
 st.title("AutoQA Interface")
 
@@ -125,37 +117,34 @@ with tab1:
 with tab2:
     st.header("Ask Questions")
     
-    if not st.session_state.model or not st.session_state.embeddings_model:
-        st.warning("Please configure the models in the Configuration tab first.")
-    else:
-        # Question input
-        question = st.text_area("Enter your question:", height=100)
-        
-        if st.button("Get Answer"):
-            with st.spinner("Processing..."):
+    # Question input
+    question = st.text_area("Enter your question:", height=100)
+    
+    if st.button("Get Answer"):
+        with st.spinner("Processing..."):
+            try:
+                # Retrieve relevant context
+                search = st.session_state.embeddings_model.search_return(rag_data, question, 2)
+                context = "\n\n".join(search)
+                
+                # Create final prompt
+                prompt = st.session_state.prompt_template.replace("{{question}}", question).replace("{{context}}", context)
+                # Get AI response
+                chat = Chat(message=prompt)
+                completion = st.session_state.model.get_completion(chat)
+                
+                # Display results
+                st.subheader("Answer:")
+                st.write(completion)
+                
+                    # Save the prompt-completion pair
                 try:
-                    # Retrieve relevant context
-                    search = st.session_state.embeddings_model.search_return(rag_data, question, 2)
-                    context = "\n\n".join(search)
-                    
-                    # Create final prompt
-                    prompt = st.session_state.prompt_template.replace("{{question}}", question).replace("{{context}}", context)
-                    # Get AI response
-                    chat = Chat(message=prompt)
-                    completion = st.session_state.model.get_completion(chat)
-                    
-                    # Display results
-                    st.subheader("Answer:")
-                    st.write(completion)
-                    
-                     # Save the prompt-completion pair
-                    try:
-                        disp = save_prompt_completion(prompt, completion)
-                        st.write(f"Prompt and completion saved to: qna_cache/{disp}_prompt.txt and qna_cache/{disp}_completion.txt")
-                    except Exception as e:
-                        st.warning(f"Failed to save Q&A pair: {str(e)}")
-                    
-                    with st.expander("Show Prompt Used"):
-                        st.write(prompt.replace("\n", "\n\n"))
+                    disp = save_prompt_completion(prompt, completion)
+                    st.write(f"Prompt and completion saved to: qna_cache/{disp}_prompt.txt and qna_cache/{disp}_completion.txt")
                 except Exception as e:
-                    st.error(f"Error processing question: {str(e)}")
+                    st.warning(f"Failed to save Q&A pair: {str(e)}")
+                
+                with st.expander("Show Prompt Used"):
+                    st.write(prompt.replace("\n", "\n\n"))
+            except Exception as e:
+                st.error(f"Error processing question: {str(e)}")
