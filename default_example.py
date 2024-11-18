@@ -20,7 +20,6 @@ model = Model(url="https://api.openai.com/v1/chat/completions", model="gpt-4o-mi
 embeddings_model = Embedding_Model(url='https://api.openai.com/v1/embeddings', api_key=api_key, model="text-embedding-3-large")
 embeddings_model.setup_doc_embeds(rag_data, override_saves=False)
 
-
 # Type whatever question you want
 questions = [
             """Building off of our discussion in lecture about the "particle in an infinite potential well," consider a particle in a finite potential well between 00 and aa in 1-dimension. The potential energy is finite (V0)(V0​) outside of the box and 00 within the box. Beginning with the time-independent Schrödinger equation, complete the following parts: (30 points)
